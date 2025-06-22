@@ -14,10 +14,22 @@
         </form>
 
         {% if short_url %}
-            <div class="alert alert-success mt-4">
-                Short URL: <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+            <div class="alert alert-success mt-4 d-flex justify-content-center align-items-center">
+                <span id="short-url">{{ short_url }}</span>
+                <button class="btn btn-outline-primary ms-3" id="copy-btn" onclick="copyToClipboard()">Copy</button>
             </div>
         {% endif %}
     </div>
+
+<script>
+function copyToClipboard() {
+    const urlText = document.getElementById('short-url').innerText;
+    navigator.clipboard.writeText(urlText).then(() => {
+        alert('Copied to clipboard!');
+    }).catch(err => {
+        alert('Failed to copy: ', err);
+    });
+}
+</script>
 </body>
 </html>
