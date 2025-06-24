@@ -3,7 +3,6 @@ import random, string
 
 app = Flask(__name__)
 
-# Dictionary to store shortened URLs (for now)
 url_mapping = {}
 
 def generate_short_id(num_chars=6):
